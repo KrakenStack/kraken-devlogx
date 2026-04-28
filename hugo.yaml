@@ -1,5 +1,5 @@
 baseURL: https://example.docsy.dev
-title: Goldydocs
+title: Welcome to GokrakensDoc
 
 # cSpell:ignore goldmark github hugo readingtime docsy subdir lastmod pygments linenos catmullrom norsk gu slugorcontentbasename
 
@@ -57,7 +57,7 @@ imaging:
 languages:
   en:
     languageName: English
-    title: Goldydocs
+    title: GokrakensDoc
     params:
       description: A Docsy example site
   # cSpell:disable
@@ -79,6 +79,14 @@ languages:
       time_format_default: 2006.01.02
       time_format_blog: 2006.01.02
   # cSpell:enable
+  zh:
+    languageName: 简体中文
+    contentDir: content/zh
+    title: GokrakensDocs 中文
+    params:
+      description: Docsy 示例网站的中文版
+      time_format_default: 2006.01.02
+      time_format_blog: 2006.01.02
 
 markup:
   goldmark:
