@@ -46,6 +46,9 @@ defaults:
 jobs:
   # ---------- 构建任务 ----------
   build:
+    env:
+      ACTIONS_STEP_DEBUG: true      # 开启步骤级调试日志
+      ACTIONS_RUNNER_DEBUG: true    # 开启 runner 级调试日志
     name: Build Hugo site
     runs-on: ubuntu-latest
     outputs:
