@@ -110,9 +110,9 @@ jobs:
           echo "Building branch: $CURRENT_BRANCH"
 
           if [[ "$CURRENT_BRANCH" == "release" ]]; then
-            hugo --minify --gc --verbose --debug
+            hugo --minify --gc --logLevel debug --printPathWarnings --printUnusedTemplates
           else
-            hugo --verbose --debug
+            hugo --logLevel debug --printPathWarnings --printUnusedTemplates
           fi
 
       # 🔍 Debug：构建结果
