@@ -74,6 +74,20 @@ run:
 hugo server
 ```
 
+
+## CI/CD 工作流
+
+本项目使用 GitHub Actions 自动构建和部署。工作流逻辑如下：
+
+| 触发事件               | 分支      | 执行动作                                           |
+| ---------------------- | --------- | -------------------------------------------------- |
+| `git push origin dev`  | `dev`     | 构建（`hugo`，无 `--minify`），仅测试，不部署      |
+| `git push origin release` | `release` | 构建（`hugo --minify`）+ 部署到 GitHub Pages       |
+| 手动触发 (`workflow_dispatch`) | 任意 | 可选择是否部署（遵循上述规则）                     |
+
+详细配置文件：`.github/workflows/gh-pages.yml`
+
+
 ## Running a container locally
 
 You can run docsy-example inside a [Docker](https://docs.docker.com/) container,

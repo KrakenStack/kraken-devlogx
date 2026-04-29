@@ -1,4 +1,4 @@
-baseURL: https://example.docsy.dev
+baseURL: https://krakenstack.github.io/kraken-devlogx/
 title: Welcome to GokrakensDoc
 
 # cSpell:ignore goldmark github hugo readingtime docsy subdir lastmod pygments linenos catmullrom norsk gu slugorcontentbasename
