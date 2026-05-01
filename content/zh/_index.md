@@ -1,78 +1,45 @@
----
-title: "欢迎来到 GokrakensDocs"
-description: "云原生文档"
-params:
-  body_class: td-navbar-links-all-active
----
-
-{{% blocks/cover
-  title="欢迎来到GokrakensDocs：GokrakensDocs项目！"
-  height="full td-below-navbar"
-  image_anchor="top"
-%}}
-
-<!--
-  Want a cover without an image?
-  Add the following argument to the blocks/cover shortcode:
-    color="primary bg-gradient td-below-navbar"
+<!-- 
+TODO: 把下面这篇技术博客翻译成中文：
+  要求：
+      1. 保留 Markdown 格式
+      2. 技术术语保持专业
+      3. 语气自然 
 -->
 
-<!-- prettier-ignore -->
-{{% _param description %}}
-{.display-6}
+{{% blocks/cover title="欢迎来到 GokrakensDocs：GokrakensDocs 项目！" height="full td-below-navbar" image_anchor="top" %}}
 
-<!-- prettier-ignore -->
-<div class="td-cta-buttons my-5">
-  <a {{% _param btn-lg primary %}} href="docs/">
-    Learn more
-  </a>
-  <a {{% _param btn-lg secondary %}}
-    href="{{% param github_repo %}}"
-    target="_blank" rel="noopener noreferrer">
-    Get the code
-    {{% _param FA brands github "" %}}
-  </a>
-</div>
+{{% _param description %}} {.display-6}
 
+了解更多 获取代码 {{% _param FA brands github "" %}}
 {{% blocks/link-down color="info" %}}
 
 {{% /blocks/cover %}}
 
 {{% blocks/lead color="white" %}}
 
-Goldydocs provides a single web UI providing visibility into porridge
-temperature, chair size, and bed softness metrics! You can even find out who's
-been eating **your** porridge.
+Goldydocs 提供了一个统一的 Web UI，用于展示诸如粥的温度、椅子的尺寸以及床铺柔软度等指标！你甚至可以查看是谁动了你的粥。
 
-(Sadly, Goldydocs isn't a real project, but you can use this site as an example
-to create your own real websites with [Docsy](https://docsy.dev))
+（遗憾的是，Goldydocs 并不是一个真实项目，但你可以将本网站作为示例，基于 Docsy 构建你自己的实际项目网站。）
 
 {{% /blocks/lead %}}
 
 {{% blocks/section color="primary" type="row" %}}
 
-{{% blocks/feature title="New chair metrics!" icon="fa-lightbulb" %}}
+{{% blocks/feature title="全新椅子指标！" icon="fa-lightbulb" %}}
 
-Please follow this space for updates!
-
-{{% /blocks/feature %}}
-
-{{% blocks/feature
-  title="Contributions welcome!" icon="fab fa-github"
-  url="https://github.com/google/docsy-example"
-%}}
-
-We do a [Pull Request](https://github.com/google/docsy-example/pulls)
-contributions workflow on **GitHub**. New users are always welcome!
+请持续关注此处以获取最新更新！
 
 {{% /blocks/feature %}}
 
-{{% blocks/feature
-  title="Follow us on X!" icon="fab fa-x-twitter"
-  url="https://x.com/docsydocs"
-%}}
+{{% blocks/feature title="欢迎贡献！" icon="fab fa-github" url="https://github.com/google/docsy-example" %}}
 
-For announcement of latest features etc.
+我们在 GitHub 上采用 Pull Request 工作流进行协作开发，欢迎新用户参与贡献！
+
+{{% /blocks/feature %}}
+
+{{% blocks/feature title="关注我们的 X 平台！" icon="fab fa-x-twitter" url="https://x.com/docsydocs" %}}
+
+用于发布最新功能和相关公告。
 
 {{% /blocks/feature %}}
 
@@ -80,12 +47,12 @@ For announcement of latest features etc.
 
 {{% blocks/section color="white" type="row text-center h1" %}}
 
-This is the second section
+这是第二个区块
 
 {{% /blocks/section %}}
 
 {{% blocks/section color="secondary" type="row text-center h1" %}}
 
-This is the another section with center alignment
+这是另一个居中对齐的区块
 
 {{% /blocks/section %}}
