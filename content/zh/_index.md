@@ -53,8 +53,6 @@ to create your own real websites with [Docsy](https://docsy.dev))
 
 {{% blocks/feature title="New chair metrics!" icon="fa-lightbulb" %}}
 
-The Goldydocs UI now shows chair size metrics by default.
-
 Please follow this space for updates!
 
 {{% /blocks/feature %}}
