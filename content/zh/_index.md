@@ -8,8 +8,8 @@ title: GokrakensDocs
   <span id="type-text"></span><span class="cursor">_</span>
 </h1>
 
-了解更多 获取代码 {{% _param FA brands github "" %}}
-{{% blocks/link-down color="info" %}}
+<!-- 了解更多 获取代码 {{% _param FA brands github "" %}}
+{{% blocks/link-down color="info" %}} -->
 
 {{% /blocks/cover %}}
 
