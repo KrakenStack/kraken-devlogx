@@ -1,93 +1,126 @@
 ---
-title: "欢迎来到 GokrakensDocs"
-description: "云原生文档"
-params:
-  body_class: td-navbar-links-all-active
+title: GokrakensDocs
 ---
 
-{{% blocks/cover
-  title="欢迎来到GokrakensDocs：GokrakensDocs项目！"
-  height="full td-below-navbar"
-  image_anchor="top"
-%}}
+{{% blocks/cover height="full td-below-navbar" class="hero-cover" %}}
 
-<!--
-  Want a cover without an image?
-  Add the following argument to the blocks/cover shortcode:
-    color="primary bg-gradient td-below-navbar"
--->
-
-<!-- prettier-ignore -->
-{{% _param description %}}
-{.display-6}
-
-<!-- prettier-ignore -->
-<div class="td-cta-buttons my-5">
-  <a {{% _param btn-lg primary %}} href="docs/">
-    Learn more
-  </a>
-  <a {{% _param btn-lg secondary %}}
-    href="{{% param github_repo %}}"
-    target="_blank" rel="noopener noreferrer">
-    Get the code
-    {{% _param FA brands github "" %}}
-  </a>
-</div>
+<h1 class="terminal-title">
+  <span id="type-text"></span><span class="cursor">_</span>
+</h1>
 
 {{% blocks/link-down color="info" %}}
 
 {{% /blocks/cover %}}
 
-{{% blocks/lead color="white" %}}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
 
-Goldydocs provides a single web UI providing visibility into porridge
-temperature, chair size, and bed softness metrics! You can even find out who's
-been eating **your** porridge.
+  const logs = [
+    "别担心被 AI 干掉，担心隔壁工位用 Copilot 的人。",
+    "system online",
+    "boot sequence initialized"
+  ];
 
-(Sadly, Goldydocs isn't a real project, but you can use this site as an example
-to create your own real websites with [Docsy](https://docsy.dev))
+  const el = document.getElementById("type-text");
 
-{{% /blocks/lead %}}
+  let i = 0;
 
-{{% blocks/section color="primary" type="row" %}}
+  function typeLine(line, cb) {
+    let j = 0;
 
-{{% blocks/feature title="New chair metrics!" icon="fa-lightbulb" %}}
+    el.innerHTML += "\n";
 
-The Goldydocs UI now shows chair size metrics by default.
+    function typing() {
+      if (j < line.length) {
+        el.innerHTML += line[j++];
+        setTimeout(typing, 35);
+      } else {
+        cb && cb();
+      }
+    }
 
-Please follow this space for updates!
+    typing();
+  }
 
-{{% /blocks/feature %}}
+  function run() {
+    if (i < logs.length) {
+      setTimeout(() => {
+        typeLine(logs[i], () => {
+          i++;
+          run();
+        });
+      }, 250);
+    }
+  }
 
-{{% blocks/feature
-  title="Contributions welcome!" icon="fab fa-github"
-  url="https://github.com/google/docsy-example"
-%}}
+  run();
 
-We do a [Pull Request](https://github.com/google/docsy-example/pulls)
-contributions workflow on **GitHub**. New users are always welcome!
+  /* =========================
+     mouse parallax
+  ========================= */
+  document.addEventListener("mousemove", (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 18;
+    const y = (e.clientY / window.innerHeight - 0.5) * 18;
 
-{{% /blocks/feature %}}
+    const cover = document.getElementById("td-cover-block-0");
 
-{{% blocks/feature
-  title="Follow us on X!" icon="fab fa-x-twitter"
-  url="https://x.com/docsydocs"
-%}}
+    if (cover) {
+      cover.style.setProperty("--x", x + "px");
+      cover.style.setProperty("--y", y + "px");
+    }
+  });
 
-For announcement of latest features etc.
+});
+</script>
 
-{{% /blocks/feature %}}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
 
-{{% /blocks/section %}}
+  const hero = document.querySelector("#td-cover-block-0");
+  if (!hero) return;
 
-{{% blocks/section color="white" type="row text-center h1" %}}
+  /* =========================
+     创建双层背景（关键）
+  ========================= */
 
-This is the second section
+  let layerA = document.createElement("div");
+  let layerB = document.createElement("div");
 
-{{% /blocks/section %}}
+  layerA.className = "bg-layer";
+  layerB.className = "bg-layer";
 
-{{% blocks/section color="secondary" type="row text-center h1" %}}
+  hero.prepend(layerA);
+  hero.prepend(layerB);
 
-This is the another section with center alignment
+  const images = [
+    "/images/bg/55170037873_a8099c72b0_o.jpg",
+    "/images/bg/55176825916_645efbea74_o.jpg",
+    "/images/bg/55176828541_4718379ed0_o.jpg",
+    "/images/bg/55176997903_caef369503_o.jpg"
+  ];
 
-{{% /blocks/section %}}
+  let index = 0;
+  let current = layerA;
+  let next = layerB;
+
+  current.style.backgroundImage = `url(${images[0]})`;
+
+  setInterval(() => {
+
+    index = (index + 1) % images.length;
+
+    next.style.backgroundImage = `url(${images[index]})`;
+
+    // 交叉淡入淡出（无黑屏）
+    next.style.opacity = 1;
+    current.style.opacity = 0;
+
+    // 交换层
+    const temp = current;
+    current = next;
+    next = temp;
+
+  }, 3000);
+
+});
+</script>
