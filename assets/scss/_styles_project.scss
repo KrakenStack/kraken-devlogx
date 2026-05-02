@@ -1,23 +1,294 @@
-/*
-Project-specific styles. For details, see:
-https://www.docsy.dev/docs/content/lookandfeel/#project-style-files
-*/
+/* ==================================================
+🚀 DOCSY NAVBAR + FOOTER FINAL HARD FIX
+================================================== */
 
-// Dark mode enhancements
-@import 'td/color-adjustments-dark';
-@import 'td/code-dark';
-@import 'td/gcs-search-dark';
-@import 'td/extra/buttons';
-@import 'td/extra/main-container';
 
-// Example of color tuning
+/* ==================================================
+🌙 BASE
+================================================== */
 
-.td-box--primary {
-  // TODO: rework the td-box--* classes so that they don't override `color`;
-  // otherwise we can't use Bootstrap's CSS variables:
-  // --bs-link-color: $color !important;
-  // --bs-link-color-rgb: red !important;
-  a {
-    color: tint-color($primary, 80%) !important;
-  }
+:root {
+  color-scheme: dark;
+}
+
+
+/* ==================================================
+🌌 BODY
+================================================== */
+
+html,
+body {
+  background: #000 !important;
+  color: #fff !important;
+  height: 100vh !important;
+  margin: 0;
+  overflow: hidden !important;
+}
+
+
+/* ==================================================
+🔝 NAVBAR (FINAL FORCE FIX)
+================================================== */
+
+/* 主容器 */
+html body .td-navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  z-index: 999999 !important;
+
+  background: rgba(0, 0, 0, 0.12) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+
+  box-shadow: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+/* 🔥 干掉 Docsy 伪元素背景（关键） */
+html body .td-navbar::before,
+html body .td-navbar::after {
+  background: transparent !important;
+  display: none !important;
+  content: none !important;
+}
+
+/* 🔥 干掉 inline style */
+html body nav.td-navbar[style] {
+  background: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: none !important;
+}
+
+
+/* ==================================================
+🌌 HERO
+================================================== */
+
+#td-cover-block-0 {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==================================================
+🎬 BG
+================================================== */
+
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+
+  opacity: 1;
+  transition: opacity 0.8s ease-in-out;
+}
+
+
+
+
+
+
+
+/* ==================================================
+🪟 ULTRA FORCE FOOTER FIX (NO DEPENDENCY)
+================================================== */
+
+html body .td-footer {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+
+  z-index: 99999 !important;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+
+/* ==================================================
+📌 强制所有 footer 内容可见
+================================================== */
+
+html body .td-footer * {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+
+/* ==================================================
+📌 三列统一强制一行
+================================================== */
+
+html body .td-footer__left,
+html body .td-footer__center,
+html body .td-footer__right {
+  position: relative !important;
+
+  display: inline-flex !important;
+
+  justify-content: center !important;
+  align-items: center !important;
+
+  margin: 0 10px !important;
+
+  font-size: 13px !important;
+  color: #fff !important;
+}
+
+
+/* ==================================================
+📌 强制横排（不管 Bootstrap）
+================================================== */
+
+html body .td-footer .row {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+
+  flex-wrap: nowrap !important;
+}
+
+
+/* ==================================================
+📌 强制贴底版权（关键）
+================================================== */
+
+html body .td-footer {
+  justify-content: flex-end !important;
+}
+
+
+/* ==================================================
+📌 链接恢复
+================================================== */
+
+html body .td-footer a {
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+
+/* ==================================================
+📌 图标恢复
+================================================== */
+
+html body .td-footer i,
+html body .td-footer svg {
+  display: inline-block !important;
+}
+
+
+
+
+
+/* ==================================================
+⌨️ CONTENT
+================================================== */
+
+.terminal-title {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 1.6rem;
+  color: #fff;
+  white-space: pre-wrap;
+}
+
+
+/* ==================================================
+🚫 ICONS CLEAN
+================================================== */
+
+.fa-solid.fa-circle-chevron-down,
+.btn.btn-link.nav-link.dropdown-toggle {
+  display: none !important;
+}
+
+
+
+
+
+/* ==================================================
+🔝 NAVBAR ULTRA TRANSPARENT (FORCE ALL LAYERS)
+================================================== */
+
+html body .td-navbar,
+html body .td-navbar * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* ==================================================
+📌 伪元素遮罩（Docsy 核心坑）
+================================================== */
+
+html body .td-navbar::before,
+html body .td-navbar::after {
+  display: none !important;
+  content: none !important;
+  background: transparent !important;
+}
+
+
+/* ==================================================
+📌 inline style（Hugo runtime 注入）
+================================================== */
+
+html body nav.td-navbar[style] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+
+/* ==================================================
+📌 深层结构兜底（container / inner / collapse）
+================================================== */
+
+html body .td-navbar .container,
+html body .td-navbar .navbar-collapse,
+html body .td-navbar .td-navbar__inner {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ===== NAVBAR 全层彻底透明修复 ===== */
+
+html body .td-navbar,
+html body .td-navbar * {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Docsy 常见遮罩层 */
+html body .td-navbar::before,
+html body .td-navbar::after,
+html body .td-navbar .navbar-bg,
+html body .td-navbar .td-navbar__wrap,
+html body .td-navbar .container,
+html body .td-navbar .container-fluid {
+  background: transparent !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+/* 防止 bootstrap gradient */
+html body .td-navbar {
+  background-image: none !important;
 }
