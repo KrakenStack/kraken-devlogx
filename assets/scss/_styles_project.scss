@@ -285,40 +285,11 @@ body {
   display: none;
 }
 
-/* 底部 Footer 整体下移 12px（不贴底） */
+.td-footer .container-fluid .row.mx-md-2 {
+  margin-top: 50px !important;
+  /* 向上移动，底部留白 */
+}
+
 .td-footer {
-  bottom: 9px !important;
-  /* 原为 0，改为正值即可抬起 */
-}
-
-/* 强制 Footer 下移 16px（如果仍不生效请增大数值） */
-body .td-footer,
-.td-footer {
-  position: fixed !important;
-  bottom: 60px !important;
-  /* 抬起 16px */
-  left: 0 !important;
-  right: 0 !important;
-  width: auto !important;
-  margin: 0 auto !important;
-  background: transparent !important;
-  border: none !important;
-  padding: 19px 0 !important;
-  z-index: 10 !important;
-}
-
-/* 确保内部 row 不被影响 */
-.td-footer .row {
-  display: flex !important;
-  justify-content: center !important;
-  align-items: center !important;
-  flex-wrap: nowrap !important;
-  width: 100% !important;
-}
-
-/* 将 hero 区域内的 .row.mx-md-2 整体下移 */
-#td-cover-block-0 .container .row.mx-md-2 {
-  margin-top: 64px !important;
-  /* 向下推 64px，可调整数值 */
-  /* 或者使用 transform: translateY(64px); 效果类似，但可能影响子元素 fixed 定位 */
+  bottom: -20px !important;
 }
