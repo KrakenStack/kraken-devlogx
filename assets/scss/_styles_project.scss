@@ -1,9 +1,4 @@
 /* ==================================================
-🚀 DOCSY NAVBAR + FOOTER FINAL HARD FIX
-================================================== */
-
-
-/* ==================================================
 🌙 BASE
 ================================================== */
 
@@ -11,284 +6,319 @@
   color-scheme: dark;
 }
 
-
 /* ==================================================
-🌌 BODY
+🧱 FULL SCREEN LOCK
 ================================================== */
 
 html,
 body {
-  background: #000 !important;
-  color: #fff !important;
-  height: 100vh !important;
   margin: 0;
-  overflow: hidden !important;
-}
+  padding: 0;
 
+  height: 100%;
+  overflow: hidden;
 
-/* ==================================================
-🔝 NAVBAR (FINAL FORCE FIX)
-================================================== */
-
-/* 主容器 */
-html body .td-navbar {
-  position: fixed !important;
-  top: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
-
-  z-index: 999999 !important;
-
-  background: rgba(0, 0, 0, 0.12) !important;
-  backdrop-filter: blur(10px) saturate(140%) !important;
-  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
-
-  box-shadow: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
-}
-
-/* 🔥 干掉 Docsy 伪元素背景（关键） */
-html body .td-navbar::before,
-html body .td-navbar::after {
   background: transparent !important;
-  display: none !important;
-  content: none !important;
+  /* 移除黑色背景，透出全屏图 */
+  color: #fff;
 }
-
-/* 🔥 干掉 inline style */
-html body nav.td-navbar[style] {
-  background: rgba(0, 0, 0, 0.12) !important;
-  box-shadow: none !important;
-}
-
 
 /* ==================================================
-🌌 HERO
+🌌 HERO FULLSCREEN
 ================================================== */
 
 #td-cover-block-0 {
   position: relative;
-  height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  height: 100vh;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
 }
 
-
-/* ==================================================
-🎬 BG
-================================================== */
-
+/* 背景图层（全屏固定，用于切换） */
 .bg-layer {
-  position: absolute;
-  inset: 0;
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 
-  opacity: 1;
-  transition: opacity 0.8s ease-in-out;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+
+  z-index: 0;
 }
 
+.bg-layer.active {
+  opacity: 1;
+}
 
-
-
-
-
+/* 内容层 */
+.hero-content,
+#td-cover-block-0 .container {
+  position: relative;
+  z-index: 2;
+}
 
 /* ==================================================
-🪟 ULTRA FORCE FOOTER FIX (NO DEPENDENCY)
+🔝 NAVBAR – 白色半透明磨砂（70% 不透明度）
 ================================================== */
 
-html body .td-footer {
-  position: fixed !important;
-  bottom: 0 !important;
-  left: 0 !important;
-  right: 0 !important;
+/* 核心容器 – 主要磨砂背景 */
+.td-navbar-container {
+  background: rgba(255, 255, 255, 0.7) !important;
+  /* 白色 70% 不透明度 */
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  /* 浅灰分割线 */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important;
 
-  z-index: 99999 !important;
+  min-height: 0 !important;
+  height: auto !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  align-items: center !important;
+}
+
+/* Bootstrap 容器 */
+.td-navbar-container.container-fluid {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Navbar 本体 – 透明继承（无需额外背景） */
+.td-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  background: transparent !important;
+  box-shadow: none !important;
+  border-bottom: none !important;
+
+  /* 高度压缩 */
+  min-height: 48px !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* 内部主区域 */
+.td-navbar__main {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 滚动时（opaque 状态）加深一点磨砂背景（可选） */
+.td-navbar.td-navbar--opaque,
+.td-navbar-container.td-navbar--opaque {
+  background: rgba(255, 255, 255, 0.85) !important;
+  /* 滚动后更实一点 */
+  backdrop-filter: blur(20px) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+/* 导航链接样式 – 深色文字 */
+.td-navbar .nav-link,
+.td-navbar .navbar-brand {
+  color: #1a1a1a !important;
+  /* 深灰/黑色，保证对比度 */
+  font-weight: 500;
+  text-shadow: none;
+}
+
+.td-navbar .nav-link:hover {
+  color: #000 !important;
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* 压缩导航链接的内边距 */
+.td-navbar .navbar-nav .nav-link,
+.td-navbar .navbar-nav .dropdown-toggle {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.25rem !important;
+  line-height: 1.4;
+}
+
+/* 品牌 Logo 区 */
+.td-navbar .navbar-brand {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  font-size: 1.1rem;
+}
+
+/* 防止任何子元素强行覆盖背景（保持透明继承） */
+.td-navbar-container * {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* ==================================================
+🔍 搜索框样式（适配白色磨砂背景）
+================================================== */
+
+.td-search__input {
+  background: rgba(0, 0, 0, 0.05) !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+  border-radius: 20px;
+  color: #1a1a1a !important;
+  padding: 0.3rem 0.8rem;
+}
+
+.td-search__input::placeholder {
+  color: #555;
+}
+
+.td-search__input:focus {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: #888;
+  outline: none;
+}
+
+/* ==================================================
+📱 移动端折叠按钮（汉堡菜单）
+================================================== */
+
+.navbar-toggler {
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+  /* 图标变黑 */
+}
+
+/* ==================================================
+📋 下拉菜单（如果存在）
+================================================== */
+
+.dropdown-menu {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #1a1a1a;
+}
+
+.dropdown-menu .dropdown-item {
+  color: #1a1a1a;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #000;
+}
+
+/* ==================================================
+📦 FOOTER（固定在底部，透明）
+================================================== */
+
+.td-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   background: transparent !important;
   border: none !important;
   box-shadow: none !important;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px 0;
+}
+
+.td-footer .row {
   display: flex !important;
-  flex-direction: column !important;
-}
-
-
-/* ==================================================
-📌 强制所有 footer 内容可见
-================================================== */
-
-html body .td-footer * {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-
-/* ==================================================
-📌 三列统一强制一行
-================================================== */
-
-html body .td-footer__left,
-html body .td-footer__center,
-html body .td-footer__right {
-  position: relative !important;
-
-  display: inline-flex !important;
-
   justify-content: center !important;
   align-items: center !important;
-
-  margin: 0 10px !important;
-
-  font-size: 13px !important;
-  color: #fff !important;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
+.td-footer__left,
+.td-footer__center,
+.td-footer__right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-/* ==================================================
-📌 强制横排（不管 Bootstrap）
-================================================== */
+  margin: 0 12px;
 
-html body .td-footer .row {
-  display: flex !important;
-  flex-direction: row !important;
-  justify-content: center !important;
-  align-items: center !important;
-
-  flex-wrap: nowrap !important;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-
-/* ==================================================
-📌 强制贴底版权（关键）
-================================================== */
-
-html body .td-footer {
-  justify-content: flex-end !important;
+.td-footer a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
 }
 
-
-/* ==================================================
-📌 链接恢复
-================================================== */
-
-html body .td-footer a {
-  color: #fff !important;
-  text-decoration: none !important;
-}
-
-
-/* ==================================================
-📌 图标恢复
-================================================== */
-
-html body .td-footer i,
-html body .td-footer svg {
-  display: inline-block !important;
-}
-
-
-
-
-
-/* ==================================================
-⌨️ CONTENT
-================================================== */
-
-.terminal-title {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 1.6rem;
+.td-footer a:hover {
   color: #fff;
-  white-space: pre-wrap;
 }
-
 
 /* ==================================================
-🚫 ICONS CLEAN
+🧼 SAFETY CLEAN
 ================================================== */
 
-.fa-solid.fa-circle-chevron-down,
-.btn.btn-link.nav-link.dropdown-toggle {
-  display: none !important;
+#td-cover-block-0 *,
+.td-footer * {
+  box-sizing: border-box;
 }
 
+/* 移除 hero 容器上的 after 遮罩 */
+#td-cover-block-0::after,
+.hero-content::after {
+  display: none;
+}
 
+/* 底部 Footer 整体下移 12px（不贴底） */
+.td-footer {
+  bottom: 9px !important;
+  /* 原为 0，改为正值即可抬起 */
+}
 
-
-
-/* ==================================================
-🔝 NAVBAR ULTRA TRANSPARENT (FORCE ALL LAYERS)
-================================================== */
-
-html body .td-navbar,
-html body .td-navbar * {
+/* 强制 Footer 下移 16px（如果仍不生效请增大数值） */
+body .td-footer,
+.td-footer {
+  position: fixed !important;
+  bottom: 60px !important;
+  /* 抬起 16px */
+  left: 0 !important;
+  right: 0 !important;
+  width: auto !important;
+  margin: 0 auto !important;
   background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+  border: none !important;
+  padding: 19px 0 !important;
+  z-index: 10 !important;
 }
 
-
-/* ==================================================
-📌 伪元素遮罩（Docsy 核心坑）
-================================================== */
-
-html body .td-navbar::before,
-html body .td-navbar::after {
-  display: none !important;
-  content: none !important;
-  background: transparent !important;
+/* 确保内部 row 不被影响 */
+.td-footer .row {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
 }
 
-
-/* ==================================================
-📌 inline style（Hugo runtime 注入）
-================================================== */
-
-html body nav.td-navbar[style] {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-
-/* ==================================================
-📌 深层结构兜底（container / inner / collapse）
-================================================== */
-
-html body .td-navbar .container,
-html body .td-navbar .navbar-collapse,
-html body .td-navbar .td-navbar__inner {
-  background: transparent !important;
-  box-shadow: none !important;
-}
-
-/* ===== NAVBAR 全层彻底透明修复 ===== */
-
-html body .td-navbar,
-html body .td-navbar * {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-}
-
-/* Docsy 常见遮罩层 */
-html body .td-navbar::before,
-html body .td-navbar::after,
-html body .td-navbar .navbar-bg,
-html body .td-navbar .td-navbar__wrap,
-html body .td-navbar .container,
-html body .td-navbar .container-fluid {
-  background: transparent !important;
-  background-image: none !important;
-  box-shadow: none !important;
-}
-
-/* 防止 bootstrap gradient */
-html body .td-navbar {
-  background-image: none !important;
+/* 将 hero 区域内的 .row.mx-md-2 整体下移 */
+#td-cover-block-0 .container .row.mx-md-2 {
+  margin-top: 64px !important;
+  /* 向下推 64px，可调整数值 */
+  /* 或者使用 transform: translateY(64px); 效果类似，但可能影响子元素 fixed 定位 */
 }
